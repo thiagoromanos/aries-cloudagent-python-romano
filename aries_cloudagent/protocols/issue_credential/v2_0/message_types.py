@@ -1,9 +1,7 @@
 """Message and inner object type identifiers for Connections."""
 
 from ...didcomm_prefix import DIDCommPrefix
-
 from .messages.cred_format import V20CredFormat
-
 
 SPEC_URI = (
     "https://github.com/hyperledger/aries-rfcs/tree/"
@@ -42,18 +40,22 @@ CRED_20_PREVIEW = "issue-credential/2.0/credential-preview"
 ATTACHMENT_FORMAT = {
     CRED_20_PROPOSAL: {
         V20CredFormat.Format.INDY.api: "hlindy/cred-filter@v2.0",
+        V20CredFormat.Format.ANONCREDS.api: "anoncreds/credential-filter@v1.0",
         V20CredFormat.Format.LD_PROOF.api: "aries/ld-proof-vc-detail@v1.0",
     },
     CRED_20_OFFER: {
         V20CredFormat.Format.INDY.api: "hlindy/cred-abstract@v2.0",
+        V20CredFormat.Format.ANONCREDS.api: "anoncreds/credential-offer@v1.0",
         V20CredFormat.Format.LD_PROOF.api: "aries/ld-proof-vc-detail@v1.0",
     },
     CRED_20_REQUEST: {
         V20CredFormat.Format.INDY.api: "hlindy/cred-req@v2.0",
+        V20CredFormat.Format.ANONCREDS.api: "anoncreds/credential-request@v1.0",
         V20CredFormat.Format.LD_PROOF.api: "aries/ld-proof-vc-detail@v1.0",
     },
     CRED_20_ISSUE: {
         V20CredFormat.Format.INDY.api: "hlindy/cred@v2.0",
+        V20CredFormat.Format.ANONCREDS.api: "anoncreds/credential@v1.0",
         V20CredFormat.Format.LD_PROOF.api: "aries/ld-proof-vc@v1.0",
     },
 }

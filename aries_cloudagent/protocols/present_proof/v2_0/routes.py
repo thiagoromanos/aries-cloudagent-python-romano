@@ -11,12 +11,11 @@ from aiohttp_apispec import (
     request_schema,
     response_schema,
 )
-
 from marshmallow import ValidationError, fields, validate, validates_schema
 
 from ....admin.request_context import AdminRequestContext
-from ....connections.models.conn_record import ConnRecord
 from ....anoncreds.holder import AnonCredsHolder, AnonCredsHolderError
+from ....connections.models.conn_record import ConnRecord
 from ....indy.holder import IndyHolder, IndyHolderError
 from ....indy.models.cred_precis import IndyCredPrecisSchema
 from ....indy.models.proof import IndyPresSpecSchema
@@ -122,6 +121,11 @@ class V20PresProposalByFormatSchema(OpenAPISchema):
         required=False,
         metadata={"description": "Presentation proposal for indy"},
     )
+    anoncreds = fields.Nested(
+        IndyProofRequestSchema,
+        required=False,
+        metadata={"description": "Presentation proposal for indy using anoncreds"},
+    )
     dif = fields.Nested(
         DIFProofProposalSchema,
         required=False,
@@ -196,6 +200,11 @@ class V20PresRequestByFormatSchema(OpenAPISchema):
         IndyProofRequestSchema,
         required=False,
         metadata={"description": "Presentation request for indy"},
+    )
+    anoncreds = fields.Nested(
+        IndyProofRequestSchema,
+        required=False,
+        metadata={"description": "Presentation request for indy using anoncreds"},
     )
     dif = fields.Nested(
         DIFProofRequestSchema,
@@ -296,6 +305,11 @@ class V20PresSpecByFormatRequestSchema(AdminAPIMessageTracingSchema):
         IndyPresSpecSchema,
         required=False,
         metadata={"description": "Presentation specification for indy"},
+    )
+    anoncreds = fields.Nested(
+        IndyPresSpecSchema,
+        required=False,
+        metadata={"description": "Presentation specification for indy using anoncreds"},
     )
     dif = fields.Nested(
         DIFPresSpecSchema,

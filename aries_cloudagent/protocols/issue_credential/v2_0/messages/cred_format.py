@@ -52,6 +52,15 @@ class V20CredFormat(BaseModel):
             ),
         )
         """
+        # using indy handler for now.
+        ANONCREDS = FormatSpec(
+            "anoncreds/",
+            V20CredExRecordIndy,
+            DeferLoad(
+                "aries_cloudagent.protocols.issue_credential.v2_0"
+                ".formats.indy.handler.IndyCredFormatHandler"
+            ),
+        )
         LD_PROOF = FormatSpec(
             "aries/",
             V20CredExRecordLDProof,

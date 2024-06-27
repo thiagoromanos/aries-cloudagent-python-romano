@@ -107,6 +107,7 @@ class V20CredExRecordDetailSchema(OpenAPISchema):
     )
 
     indy = fields.Nested(V20CredExRecordIndySchema, required=False)
+    anoncreds = fields.Nested(V20CredExRecordIndySchema, required=False)
     ld_proof = fields.Nested(V20CredExRecordLDProofSchema, required=False)
 
 
@@ -176,6 +177,11 @@ class V20CredFilterSchema(OpenAPISchema):
         V20CredFilterIndySchema,
         required=False,
         metadata={"description": "Credential filter for indy"},
+    )
+    anoncreds = fields.Nested(
+        V20CredFilterIndySchema,
+        required=False,
+        metadata={"description": "Credential filter for indy using anoncreds"},
     )
     ld_proof = fields.Nested(
         LDProofVCDetailSchema,
